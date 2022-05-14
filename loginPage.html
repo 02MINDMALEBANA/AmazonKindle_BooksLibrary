@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="style.CSS">
+    </head>
+    <body id="log">
+        <a id="page" href="landingPage.html"></a>
+        <a id="page1" href="index.html"></a>
+        
+        <form action="landingPage.html" name="Login" id="loginForm">
+            <h3 id="logfrm">LOGIN FORM</h3>
+            Username <input id="userN" type="text"name="username" placeholder="Enter Your User Name" required><br><br>
+            Password <input id="psd" type="text" name="password" placeholder="Enter your Password" required><br><br>
+            <button id="btnlog" type="submit" onclick="Output()">Login</button><br><br>
+            <input type="checkbox" checked="checked" name="remember"> Remember Me<br><br>
+            Don't have an account?<a href="index.html"> SignUp Now</a><br><br>
+
+        </form>
+    
+        <script>
+            function Output()
+            {
+                document.getElementById("page1");
+                //check if stored data from registration form is = to entered data in the login form
+                // stored data from register form 
+                var nm = localStorage.getItem('nm');
+                var pswd = localStorage.getItem('pswd');
+                // entered data from the login form 
+                var psd = document.getElementById('psd');
+                var userN =  document.getElementById('userN').value; 
+                localStorage.setItem("textvalue",userN);
+                return false;
+                // check if stored data from register form is equal to data from login form
+                if (userN.value !== nm || psd.value !== pswd) {
+                    alert("successfully logged in");
+                    document.write();
+                    window.location.href = "landingPage.html"
+                }else {
+                    alert('error!!!');
+     
+                }
+              
+            }
+        </script>
+    </body>
