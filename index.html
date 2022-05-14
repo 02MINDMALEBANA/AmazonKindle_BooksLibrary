@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.CSS">
+    <body style="background-color: rgb(245, 215, 160);">
+        <form name="registration" id="register" action="loginPage.html">
+            <h3 style="color: rgb(248, 173, 34);">REGISTRATION FORM</h3>
+            <table>
+                <tr>
+                    <td>
+                        <a id="login" href="loginPage.html"></a>
+                        <input id="nm" type="text"  placeholder="First Name" required><br><br>
+                        <input id="surN" type="text"  placeholder="Last Name" required><br><br>
+                        <input id="email" type="text"  placeholder="Email" required><br><br>
+                        <input id="num" type="text" placeholder="Phone Number" required><br><br>
+                        <input id="pswd" type="text" placeholder="Password" required><br><br>
+                        <label>Select Image File:</label>
+                        <input id="propic" type="file">
+                        <br><br>
+                        <button id="btn1" onclick="Display()" type="submit">Register Now</button><br><br>
+                        Already have an account? <a href="loginPage.html">Login Now</a><br><br>
+                        
+
+
+                    </td>
+                </tr>
+            </table>
+        </form>
+      
+        <script>
+             var FullNamesInput  =document.getElementById('nm');
+             var SurnameInput =document.getElementById('surN');
+             var EmailInput =document.getElementById('email');
+             var PasswordInput = document.getElementById('pswd');
+             var NumberInput =document.getElementById('num');
+             var PictureInput =document.getElementById('propic');
+
+             //check local storage for register data
+             var RegisterInfo = JSON.parse(localStorage.getItem("RegisterInfo"));
+               console.log(RegisterInfo.FullNames);
+               console.log(RegisterInfo.Surname);
+               console.log(RegisterInfo.Password);
+               console.log(RegisterInfo.Number);
+               console.log(RegisterInfo.Email);
+
+                // if (RegisterInfo) {
+                //     FullNamesInput.value = RegisterInfo.FullNames;
+                //     SurnameInput.value = RegisterInfo.Surname;
+                //     EmailInput.value = RegisterInfo.Email;
+                //     PasswordInput.value = RegisterInfo.Password;
+                //     ConfirmInput.value = RegisterInfo.Confirm;
+                //     NumberInput.value = RegisterInfo.Number;
+                
+                // }
+
+            function Display()
+            {
+                //get data
+                var FullNames=document.getElementById('nm').value.trim()
+                var Surname=document.getElementById('surN').value.trim()
+                var Email=document.getElementById('email').value.trim()
+                var Password=document.getElementById('pswd').value.trim()
+                var Number=document.getElementById('num').value.trim()
+                var Picture=document.getElementById('propic').value.trim()
+                //console.log("nm",FullNames);
+                //console.log("surN",Surname);
+                //console.log("email",Email);
+                //console.log("pswd",pswd);
+                //console.log("num",Number);
+                //console.log("propic",Picture);
+                //if values are valid 
+                if (!FullNames || !Surname || !Email || !Password || !Number || !Picture){
+                    return;
+                }  
+                //save them in the local storage
+                var RegisterInfo = {
+                    FullNames: FullNames,
+                    Surname: Surname,
+                    Email: Email,
+                    Password: Password,
+                    Number: Number,
+                    Picture: Picture,
+                }; 
+           
+                localStorage.setItem("RegisterInfo", JSON.stringify(RegisterInfo));  
+
+                document.write(); 
+                window.location.href="loginPage.html";      
+            }
+           
+        </script>
+      
+    </body>
+</html>
